@@ -1,24 +1,9 @@
 "use strict";
 
-const {getRandomInt} = require(`../../../utils`);
+const {getRandomInt, shuffle} = require(`../../../utils`);
 
 const getCategories = (catigoriesArr) => {
-  let count = getRandomInt(0, catigoriesArr.length);
-
-  const newCategories = [];
-
-  do {
-    const randomIndex = getRandomInt(0, catigoriesArr.length - 1);
-    const category = catigoriesArr[randomIndex];
-
-    if (!newCategories.includes(category)) {
-      newCategories.push(category);
-    }
-
-    count--;
-  } while (count);
-
-  return newCategories;
+  return shuffle(catigoriesArr).slice(0, getRandomInt(1, catigoriesArr.length));
 };
 
 module.exports.getCategories = getCategories;

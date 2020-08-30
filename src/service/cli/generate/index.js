@@ -29,9 +29,9 @@ const generate = (count) => {
 module.exports = {
   name: `--generate`,
   run: async (count) => {
-    count = Number.parseInt(count, 10) || DEFAULT_ADS_NUMBER;
+    const countNumber = Number.parseInt(count, 10) || DEFAULT_ADS_NUMBER;
 
-    const content = JSON.stringify(generate(count));
+    const content = JSON.stringify(generate(countNumber));
 
     try {
       await fs.writeFile(`mocks.json`, content);

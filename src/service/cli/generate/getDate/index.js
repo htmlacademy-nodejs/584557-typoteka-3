@@ -7,7 +7,7 @@ const TREE_MONTH = 60 * 60 * 24 * 91 * 1000;
 const getDate = () =>{
   return new Date(
       (+new Date() - getRandomInt(0, TREE_MONTH))
-  ).toLocaleString();
+  ).toISOString().replace(`T`, ` `).slice(0, -5);
 };
 
 module.exports.getDate = getDate;

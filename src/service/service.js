@@ -2,10 +2,14 @@
 
 const {cli} = require(`./cli`);
 
-const {USER_ARGV_INDEX, USER_DEFAULT_COMMAND, MAX_ADS_NUMBER, exitCode} = require(`../constants`);
+const {USER_ARGV_INDEX, USER_DEFAULT_COMMAND, MAX_ADS_NUMBER, DEFAULT_ADS_NUMBER, exitCode} = require(`../constants`);
 
 const userArguments = process.argv.slice(USER_ARGV_INDEX);
-const [userCommand, count] = userArguments;
+let [userCommand, count] = userArguments;
+
+if (count === undefined) {
+  count = DEFAULT_ADS_NUMBER;
+}
 
 if (count > MAX_ADS_NUMBER) {
   console.log(`Не больше ${MAX_ADS_NUMBER}`);
